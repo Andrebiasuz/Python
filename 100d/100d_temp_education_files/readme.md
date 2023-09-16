@@ -1,0 +1,1 @@
+In this folder, the education materials from the Code100 challenges will be posted. All the interactive coding challenges and the projects which are not flashy enough for a portfolio, which will be in the '100d_projects' folder.

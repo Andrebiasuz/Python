@@ -1,5 +1,6 @@
 """
-Generate a N character alphanumeric password with N lower case characters , N uppercase characters, and N digits or special characters:
+Generate a N character alphanumeric password with N lower case characters , 
+N uppercase characters, and N digits or special characters:
 
 Adapted from standard documentation. 
 
@@ -40,7 +41,6 @@ while True:
         password_digits_or_special = 0
     else:
         break
-
 
 alphabet = string.ascii_letters + string.digits + string.punctuation
 while True:

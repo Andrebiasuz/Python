@@ -1,38 +1,19 @@
-"""direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
-text = input("Type your message:\n").lower()
-shift = int(input("Type the shift number:\n"))"""
-
-import string
-from unidecode import unidecode
+"""Module providing function for encoding and decoding a ceasar cypher."""
+import ceasar_cypher_functions
 
 
-def ceasar_cypher_encode(string_to_encode, cypher_shift):
-    """Function receives a string to be encoded acording to Ceasar Cypher method ,
-    and a integer as the cypher's shift. Returns the encoded string. Needs the string library,
-    and unidecode package because Romans didnt have accentuation
-    """
+while True:
+    text = input("Type your message:\n").lower()
+    shift = int(input("Type the shift number:\n"))
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
 
-    alfabet = string.ascii_lowercase
-    string_to_encode = unidecode(string_to_encode).lower()
-    # string_to_encode = string_to_encode.lower()
+    if direction == "encode":
+        encoded_string = ceasar_cypher_functions.ceasar_cypher_encode(text, shift)
+        print(encoded_string)
+        break
 
-    encoded = ""
-
-    for index, value in enumerate(string_to_encode):
-        position_in_alfabet_string = alfabet.find(string_to_encode[index])
-
-        encoded_index = position_in_alfabet_string + cypher_shift
-
-        if (position_in_alfabet_string + cypher_shift) >= len(alfabet):
-            encoded_index = encoded_index - len(alfabet)
-
-        if position_in_alfabet_string == -1:
-            encoded = encoded + " "
-
-        else:
-            encoded = encoded + alfabet[encoded_index]
-
-    return encoded
-
-
-print(ceasar_cypher_encode("Douglas é um grande amigo", 10))
+    elif direction == "decode":
+        decoded_string = ceasar_cypher_functions.ceasar_cypher_decode(text, shift)
+        print(decoded_string)
+    else:
+        print("Command not correct")

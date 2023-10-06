@@ -2,5 +2,6 @@
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter"
   },
-  "python.formatting.provider": "none"
+  "python.formatting.provider": "none",
+  "python.analysis.extraPaths": ["./100d/100d_temp_education_files/bia_package"]
 }

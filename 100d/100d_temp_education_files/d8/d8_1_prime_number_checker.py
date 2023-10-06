@@ -1,6 +1,3 @@
-# function to check if a number is prime. Entries between 0 and 100.
-
-
 def prime_checker(number):
     """function to check if a number is prime. Entries between 0 and 100. Returns a Boolean"""
     # hard-coded math exceptions

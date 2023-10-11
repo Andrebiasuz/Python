@@ -15,18 +15,25 @@ def ceasar_cypher_encode(string_to_encode, cypher_shift):
     encoded = ""
 
     for index, value in enumerate(string_to_encode):
-        position_in_alfabet_string = alfabet.find(string_to_encode[index])
 
-        encoded_index = position_in_alfabet_string + cypher_shift
+        if string_to_encode[index] in string.punctuation:
 
-        if (position_in_alfabet_string + cypher_shift) >= len(alfabet):
-            encoded_index = encoded_index - len(alfabet)
-
-        if position_in_alfabet_string == -1:
-            encoded = encoded + " "
+            encoded = encoded + string_to_encode[index]
 
         else:
-            encoded = encoded + alfabet[encoded_index]
+
+            position_in_alfabet_string = alfabet.find(string_to_encode[index])
+
+            encoded_index = position_in_alfabet_string + cypher_shift
+
+            if (position_in_alfabet_string + cypher_shift) >= len(alfabet):
+                encoded_index = encoded_index - len(alfabet)
+
+            if position_in_alfabet_string == -1:
+                encoded = encoded + " "
+
+            else:
+                encoded = encoded + alfabet[encoded_index]
 
     return encoded
 
@@ -42,14 +49,23 @@ def ceasar_cypher_decode(string_to_decode, cypher_shift):
     for index, value in enumerate(string_to_decode):
         position_in_alfabet_string = alfabet.find(string_to_decode[index])
 
-        decoded_index = position_in_alfabet_string - cypher_shift
+        if string_to_decode[index] in string.punctuation:
 
-        if (position_in_alfabet_string + cypher_shift) < 0:
-            decoded_index = decoded_index + len(alfabet)
+            decoded = decoded + string_to_decode[index]
 
-        if position_in_alfabet_string == -1:
-            decoded = decoded + " "
         else:
-            decoded = decoded + alfabet[decoded_index]
+
+            decoded_index = position_in_alfabet_string - cypher_shift
+
+            if (position_in_alfabet_string + cypher_shift) < 0:
+                decoded_index = decoded_index + len(alfabet)
+
+            if decoded_index == 26:
+                decoded_index = 0
+
+            if position_in_alfabet_string == -1:
+                decoded = decoded + " "
+            else:
+                decoded = decoded + alfabet[decoded_index]
 
     return decoded

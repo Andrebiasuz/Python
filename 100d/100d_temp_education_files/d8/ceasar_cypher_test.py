@@ -1,6 +1,8 @@
 import unittest
 import ceasar_cypher_functions
 
+# TODO: Added colors to tests
+
 class CaesarCipherTestCase(unittest.TestCase):
     def test_encrypt(self):
         plaintext = "Hello, World!"

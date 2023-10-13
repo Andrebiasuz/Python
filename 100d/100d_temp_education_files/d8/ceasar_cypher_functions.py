@@ -8,46 +8,55 @@ def ceasar_cypher_encode(string_to_encode, cypher_shift):
     and unidecode package because Romans didnt have accentuation
     """
 
-    alfabet = string.ascii_lowercase
-    string_to_encode = unidecode(string_to_encode).lower()
-    # string_to_encode = string_to_encode.lower()
+    alfabet_lower = string.ascii_lowercase
+    alfabet_upper = string.ascii_uppercase
+
+    string_to_encode = unidecode(string_to_encode)
+    string_to_encode_lower = string_to_encode.lower()
 
     encoded = ""
 
     for index, value in enumerate(string_to_encode):
 
-        if string_to_encode[index] in string.punctuation:
+        if string_to_encode_lower[index] in string.punctuation:
 
             encoded = encoded + string_to_encode[index]
 
         else:
 
-            position_in_alfabet_string = alfabet.find(string_to_encode[index])
+            position_in_alfabet_string = alfabet_lower.find(string_to_encode_lower[index])
 
             encoded_index = position_in_alfabet_string + cypher_shift
 
-            if (position_in_alfabet_string + cypher_shift) >= len(alfabet):
-                encoded_index = encoded_index - len(alfabet)
+            if (position_in_alfabet_string + cypher_shift) >= len(alfabet_lower):
+                encoded_index = encoded_index - len(alfabet_lower)
 
             if position_in_alfabet_string == -1:
                 encoded = encoded + " "
 
             else:
-                encoded = encoded + alfabet[encoded_index]
+                
+                if string_to_encode[index].isupper():
+                    encoded = encoded + alfabet_upper[encoded_index]
+                else:    
+                    encoded = encoded + alfabet_lower[encoded_index]
+                
 
     return encoded
 
-
+# TODO: Add upper and lower to alfabet. 
 def ceasar_cypher_decode(string_to_decode, cypher_shift):
     """Function receives an encoded string acording to Ceasar Cypher method ,
     and a integer as the cypher's shift. Returns the decoded string. Needs the string library,
     """
 
     alfabet = string.ascii_lowercase
+    string_to_decode_lower = string_to_decode.lower()
 
     decoded = ""
-    for index, value in enumerate(string_to_decode):
-        position_in_alfabet_string = alfabet.find(string_to_decode[index])
+
+    for index, value in enumerate(string_to_decode_lower):
+        position_in_alfabet_string = alfabet.find(string_to_decode_lower[index])
 
         if string_to_decode[index] in string.punctuation:
 

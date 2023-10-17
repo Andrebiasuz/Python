@@ -29,7 +29,7 @@ def ceasar_cypher_encode(string_to_encode, cypher_shift):
             encoded_index = position_in_alfabet_string + cypher_shift
 
             if (position_in_alfabet_string + cypher_shift) >= len(alfabet_lower):
-                encoded_index = encoded_index - len(alfabet_lower) % 26
+                encoded_index = encoded_index % len(alfabet_lower)
 
             if position_in_alfabet_string == -1:
                 encoded = encoded + " "
@@ -66,8 +66,11 @@ def ceasar_cypher_decode(string_to_decode, cypher_shift):
 
             decoded_index = position_in_alfabet_string - cypher_shift
 
+            if (position_in_alfabet_string + cypher_shift) >= len(alfabet_lower):
+                decoded_index = decoded_index % len(alfabet_lower)
+
             if (position_in_alfabet_string + cypher_shift) < 0:
-                decoded_index = decoded_index + len(alfabet_lower)%26
+                decoded_index = decoded_index + len(alfabet_lower) % 26
 
             if decoded_index == 26:
                 decoded_index = 0

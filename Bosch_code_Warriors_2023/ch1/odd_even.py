@@ -3,7 +3,6 @@ def even_or_odd(number):
         return "Even"
     return "Odd"
 
-
 import datetime
 start_time = datetime.datetime.now()
 for i in range(0,1000000):

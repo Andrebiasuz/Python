@@ -64,36 +64,38 @@ def decision_RPS (p1_choice,p2_choice):
     0,2 win     1,2 lose     2,2 draw
 '''
 
+    '''Determines the result of Rock-Paper-Scissors for player 1 against player 2.'''
     if p1_choice == p2_choice:
-        print ("Draw")
-
-    elif (p1_choice + 1) == p2_choice:
-        print ("Lose")
-
+        return "Draw"
+    elif (p1_choice + 1) % 3 == p2_choice:
+        return "Lose"
     else:
-        print("Win")
+        return "Win"
 
 
 # Implementation
 
-while True:
-    iPlayerChoice = int(input("What do you choose? Type 0 for Rock, 1 for Paper and 2 for Scissors:"))
-    
-    if iPlayerChoice in (0, 1, 2):
-        break
+def main():
 
-iComputerChoice = random.randint(0, 2)
+    while True:
+        iPlayerChoice = int(input("What do you choose? Type 0 for Rock, 1 for Paper and 2 for Scissors:"))
+        
+        if iPlayerChoice in (0, 1, 2):
+            break
 
-print("Player selected: ")
-drawAsciiRPS(iPlayerChoice)
+    iComputerChoice = random.randint(0, 2)
 
-print("Computer selected")
-drawAsciiRPS(iComputerChoice)
+    print("Player selected: ")
+    drawAsciiRPS(iPlayerChoice)
 
-decision_RPS(iPlayerChoice,iComputerChoice)
+    print("Computer selected")
+    drawAsciiRPS(iComputerChoice)
+
+    print(decision_RPS(iPlayerChoice,iComputerChoice))
 
 
-
+if __name__ == "__main__":
+    main()
 
 
 

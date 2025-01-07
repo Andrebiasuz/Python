@@ -1,0 +1,5 @@
+Files related to 100 days of code , Version Python, by Angela Yu. 
+
+100d education files - Exercises
+
+100d projects - Projects at the end of each day. 
